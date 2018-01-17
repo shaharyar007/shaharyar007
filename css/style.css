@@ -473,7 +473,7 @@ span.border.one:after {
 .about-right{
 	    float: left;
 	padding:0;
-	background:url(../images/header.jpg) no-repeat 0px 0px;
+	background:url(../images/pic12.jpg) no-repeat 0px 0px;
 	min-height:580px;
 	background-size: cover;
    -o-background-size: cover;
@@ -1085,7 +1085,7 @@ div#portfolioModal1,div#portfolioModal2,div#portfolioModal3,div#portfolioModal4,
     width: 100%;
 }
 .contact-grid1-left1 {
-    padding: 2em;
+    padding: 38px;
     border-bottom: 1px ridge rgb(214, 212, 212);
     background:#fff;
     text-align: center;
