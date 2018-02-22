@@ -583,7 +583,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form id="foo" action="" method="post">
 					<input type="text" id="name" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
 					<input type="email" id="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<!--<input type="text" name="Mobile number" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">-->
+					<input type="text" name="phone" id="phone" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
 					<textarea name="Message..." id="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
 					<input type="submit" class="button" value="Send">
 					
@@ -807,15 +807,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $(".button").click(function() {
         var name = $("#name").val();
         var email = $("#email").val();
+        var phone = $("#phone").val();
         var text = $("#text").val();
-        var dataString = 'name='+ name + '&email=' + email + '&text=' + text;
+        var dataString = 'name='+ name + '&email=' + email + 'phone=' + phone + '&text=' + text;
 
         $.ajax({
             type: "POST",
             url: "https://shaharyar007.000webhostapp.com/phpmail.php",
             data: dataString,
             success: function(){
-            $('.success').fadeIn(1000);
+            $('.success').fadeIn(500);
             }
         });
 
