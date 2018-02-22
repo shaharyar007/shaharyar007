@@ -175,6 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 about-right">
 					
 				</div>
+                
 				<div class="clearfix"> </div>
 							<link href="css/owl.carousel.css" rel="stylesheet">
 							    <script src="js/owl.carousel.js"></script>
@@ -579,7 +580,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-md-6 mail_right">
-				<form action="#" method="post">
+				<form id="foo" action="" method="post">
 					<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
 					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
 					<input type="text" name="Mobile number" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
@@ -591,7 +592,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"></div>
 		</div>
 		<div class="copy_right text-center">
-			<p>Let's get social? Follow my online profiles on Facebook, Twitter, Github and Linkedin.</a></p>
+			<p>Let's get social? Follow my online profiles on Facebook, Twitter, Github and Linkedin.</p>
 			 <ul class="social-icons two">
 							<li><a href="https://twitter.com/ShehRyyar007"> </a></li>
 						<!--	<li><a href="#" class="fb"> </a></li>-->
@@ -801,7 +802,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<!--end-smooth-scrolling-->
 <!-- //for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
-	
+	<script>
+        // Variable to hold request
+var request;
+
+// Bind to the submit event of our form
+$("#foo").submit(function(event){
+
+    // Prevent default posting of form - put here to work in case of errors
+    event.preventDefault();
+
+    // Abort any pending request
+    if (request) {
+        request.abort();
+    }
+    // setup some local variables
+    var $form = $(this);
+
+    // Let's select and cache all the fields
+    var $inputs = $form.find("input , textarea");
+
+    // Serialize the data in the form
+    var serializedData = $form.serialize();
+
+    // Let's disable the inputs for the duration of the Ajax request.
+    // Note: we disable elements AFTER the form data has been serialized.
+    // Disabled form elements will not be serialized.
+    $inputs.prop("disabled", true);
+
+    // Fire off the request to /form.php
+    request = $.ajax({
+        url: "https://shaharyar007.000webhostapp.com/phpmail.php",
+        type: "post",
+        data: serializedData
+    });
+
+    // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        console.log("Hooray, it worked!");
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // Callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+        // Reenable the inputs
+        $inputs.prop("disabled", false);
+    });
+
+});
+
+        
+        </script>
 
 	</body>
 </html>
