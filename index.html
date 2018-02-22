@@ -580,14 +580,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="col-md-6 mail_right">
-				<form id="foo" action="" method="post" name="postForm">
-					<input type="text" name="name" id="name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                    <span class="throw_error"></span>
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                    <span class="throw_error"></span>
-					<input type="text" name="Mobile number" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
-					<textarea name="Message..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-					<input type="submit" value="Send">
+				<form id="foo" action="" method="post">
+					<input type="text" id="name" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="email" id="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<!--<input type="text" name="Mobile number" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">-->
+					<textarea name="Message..." id="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+					<input type="submit" class="button" value="Send">
 					
 				</form>
 			</div>
@@ -805,37 +803,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<script>
-$(document).ready(function() {
-    $('form').submit(function(event) { //Trigger on form submit
-        $('#name + .throw_error').empty(); //Clear the messages first
-        $('#success').empty();
+        $(function() {
+    $(".button").click(function() {
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var text = $("#text").val();
+        var dataString = 'name='+ name + '&email=' + email + '&text=' + text;
 
-        //Validate fields if required using jQuery
-
-        var postForm = { //Fetch form data
-            'name'     : $('input[name=name]').val() //Store name fields value
-        };
-
-        $.ajax({ //Process the form using $.ajax()
-            type      : 'POST', //Method type
-            url       : 'https://shaharyar007.000webhostapp.com/phpmail.php', //Your form processing file URL
-            data      : postForm, //Forms name
-            dataType  : 'json',
-            success   : function(data) {
-                            if (!data.success) { //If fails
-                                if (data.errors.name) { //Returned if any error from process.php
-                                    $('.throw_error').fadeIn(1000).html(data.errors.name); //Throw relevant error
-                                }
-                            }
-                            else {
-                                    $('#success').fadeIn(1000).append('<p>' + data.posted + '</p>'); //If successful, than throw a success message
-                                }
-                            }
+        $.ajax({
+            type: "POST",
+            url: "phpmail.php",
+            data: dataString,
+            success: function(){
+            $('.success').fadeIn(1000);
+            }
         });
-        event.preventDefault(); //Prevent the default submit
+
+        return false;
     });
 });
-
         
         </script>
 
