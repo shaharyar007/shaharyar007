@@ -117,7 +117,8 @@ ul.address {
 }
 .header-left img {
     width: 100%;
-     margin-top: 19px;
+	 margin-top: 19px;
+	 max-width: 290px;
 }
 .header-right {
     padding-left: 3em;
@@ -960,8 +961,12 @@ div#portfolioModal1,div#portfolioModal2,div#portfolioModal3,div#portfolioModal4,
    background: rgba(0, 0, 0, 0.55);
 }
 .team-gd img {
-    width: 100%;
-	border-bottom: 9px solid rgba(0, 0, 0, 0.81);
+	width: 100%;
+    border-bottom: 9px solid rgba(0, 0, 0, 0.81);
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 /*-- portfolio --*/
 
@@ -1063,8 +1068,12 @@ div#portfolioModal1,div#portfolioModal2,div#portfolioModal3,div#portfolioModal4,
     transform: rotate(90deg);
 }
 .team-gd {
-    padding: 0;
-	position:relative;
+	padding: 0;
+    position: relative;
+    width: 25%;
+    max-width: 100%;
+    max-height: 194px;
+    overflow: hidden;
 }
 .bottom-top {
     margin: 0 auto;
@@ -1244,6 +1253,32 @@ span.border.two:after {
 	opacity: 0;
 	-moz-opacity: 0;
 	filter: alpha(opacity=0);
+}
+
+.tab-1 .row{
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+.tab-1 .row a>img{
+	height: 350px;
+	width:350px;
+	max-width: 350px;
+	object-fit: cover;
+	object-position: center;
+}
+.ekko-lightbox-item.fade.in img{
+	max-width: 700px;
+	height:auto;
+
+}
+.ekko-lightbox .modal-dialog {
+	margin-top:2rem !important;
+}
+.modal-dialog .ekko-lightbox .modal-content{
+	width:750px;
+
 }
 /*-- responsive-design --*/
 @media(max-width:1366px){
